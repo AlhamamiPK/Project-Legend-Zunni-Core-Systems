@@ -10,7 +10,8 @@ This repo showcases individual systems pulled from the live project, each refact
 ### ✅ Done & Uploaded
 - [x] `ShopManager.cs` — Infinite-scaling shop with x1/x10/x100/Max multipliers (BreakInfinity)
 - [x] `PlayerStats.cs` — Movement, combat, tiered knockback, and hit feedback
-
+- [x] `PlayerSavedData.cs` — cross-session save container for shop prices and player state
+- [X] `PlayerController.cs` — input, movement, animation, and knockback with DRY architecture
 ---
 
 ### 🔊 Audio
@@ -43,11 +44,13 @@ This repo showcases individual systems pulled from the live project, each refact
 ### 🗂️ Managers
 - [ ] `CurrencyManager.cs`
 - [ ] `SpeedManager.cs`
+- [X] `ShopManager.cs`
 
 ### 🧍 Player
 - [ ] `CustomMouse.cs`
-- [ ] `PlayerController.cs`
-- [ ] `PlayerSavedData.cs`
+- [X] `PlayerStats.cs`
+- [X] `PlayerController.cs`
+- [X] `PlayerSavedData.cs`
 
 ### 🖥️ UI
 - [ ] `DamageText.cs`
