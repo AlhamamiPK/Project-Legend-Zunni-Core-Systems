@@ -8,11 +8,12 @@ This repo showcases individual systems pulled from the live project, each refact
 ## Systems Checklist
 
 ### ✅ Done & Uploaded
-- [x] `ShopManager.cs` — Infinite-scaling shop with x1/x10/x100/Max multipliers (BreakInfinity)
-- [x] `PlayerStats.cs` — Movement, combat, tiered knockback, and hit feedback
-- [x] `PlayerSavedData.cs` — cross-session save container for shop prices and player state
+- [X] `ShopManager.cs` — Infinite-scaling shop with x1/x10/x100/Max multipliers (BreakInfinity)
+- [X] `PlayerStats.cs` — Movement, combat, tiered knockback, and hit feedback
+- [X] `PlayerSavedData.cs` — cross-session save container for shop prices and player state
 - [X] `PlayerController.cs` — input, movement, animation, and knockback with DRY architecture
 - [X] `AudioPlayer.cs` — SFX playback, music ducking, hurt scaling, and boss music transitions
+- [X] `StageData` — ScriptableObject defining stage identity, scene objects, and win condition
 
 
 ---
@@ -23,7 +24,7 @@ This repo showcases individual systems pulled from the live project, each refact
 ### ⚙️ Core
 - [ ] `BigDouble.cs`
 - [ ] `GameManager.cs`
-- [ ] `StageData.cs`
+- [X] `StageData.cs`
 
 ### 👾 Enemies
 - [ ] `BossController.cs`
