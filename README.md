@@ -15,6 +15,7 @@ This repo showcases individual systems pulled from the live project, each refact
 - [X] `AudioPlayer.cs` — SFX playback, music ducking, hurt scaling, and boss music transitions
 - [X] `StageData` — ScriptableObject defining stage identity, scene objects, and win condition
 - [X] `CurrencyPickUp` — Magnetic homing pickup with loot pop, sparkle particles, and animation override
+- [X] `CurrencyData` — ScriptableObject defining currency value, visuals, animation, and sound
 
 
 ---
@@ -36,7 +37,7 @@ This repo showcases individual systems pulled from the live project, each refact
 - [ ] `NormalEnemiesSpawner.cs`
 
 ### 💎 Entities & Pickups
-- [ ] `CurrencyData.cs`
+- [X] `CurrencyData.cs`
 - [X] `CurrencyPickUp.cs`
 - [ ] `XPOrb.cs`
 
