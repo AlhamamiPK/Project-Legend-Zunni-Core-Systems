@@ -10,11 +10,11 @@ This repo showcases individual systems pulled from the live project, each refact
 ### ✅ Done & Uploaded
 - [X] `ShopManager.cs` — Infinite-scaling shop with x1/x10/x100/Max multipliers (BreakInfinity)
 - [X] `PlayerStats.cs` — Movement, combat, tiered knockback, and hit feedback
-- [X] `PlayerSavedData.cs` — cross-session save container for shop prices and player state
-- [X] `PlayerController.cs` — input, movement, animation, and knockback with DRY architecture
+- [X] `PlayerSavedData.cs` — Cross-session save container for shop prices and player state
+- [X] `PlayerController.cs` — Input, movement, animation, and knockback with DRY architecture
 - [X] `AudioPlayer.cs` — SFX playback, music ducking, hurt scaling, and boss music transitions
 - [X] `StageData` — ScriptableObject defining stage identity, scene objects, and win condition
-- [X] `CurrencyPickUp` — magnetic homing pickup with loot pop, sparkle particles, and animation override
+- [X] `CurrencyPickUp` — Magnetic homing pickup with loot pop, sparkle particles, and animation override
 
 
 ---
