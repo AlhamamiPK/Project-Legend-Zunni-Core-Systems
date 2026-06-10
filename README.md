@@ -14,6 +14,7 @@ This repo showcases individual systems pulled from the live project, each refact
 - [X] `PlayerController.cs` — input, movement, animation, and knockback with DRY architecture
 - [X] `AudioPlayer.cs` — SFX playback, music ducking, hurt scaling, and boss music transitions
 - [X] `StageData` — ScriptableObject defining stage identity, scene objects, and win condition
+- [X] `CurrencyPickUp` — magnetic homing pickup with loot pop, sparkle particles, and animation override
 
 
 ---
@@ -36,7 +37,7 @@ This repo showcases individual systems pulled from the live project, each refact
 
 ### 💎 Entities & Pickups
 - [ ] `CurrencyData.cs`
-- [ ] `CurrencyPickUp.cs`
+- [X] `CurrencyPickUp.cs`
 - [ ] `XPOrb.cs`
 
 ### 🌍 Environment & Camera
