@@ -17,6 +17,7 @@ This repo showcases individual systems pulled from the live project, each refact
 - [X] `CurrencyPickUp` — Magnetic homing pickup with loot pop, sparkle particles, and animation override
 - [X] `CurrencyData` — ScriptableObject defining currency value, visuals, animation, and sound
 - [X] `Enemy` — base enemy controller with combat, weighted loot drops, and death sequence
+- [X] `BossController` — boss intro sequence, fight timer, and win/timeout handling
 
 
 ---
@@ -30,7 +31,7 @@ This repo showcases individual systems pulled from the live project, each refact
 - [X] `StageData.cs`
 
 ### 👾 Enemies
-- [ ] `BossController.cs`
+- [X] `BossController.cs`
 - [ ] `BossSetActiveTrigger.cs`
 - [X] `Enemy.cs`
 - [ ] `EnemyData.cs`
