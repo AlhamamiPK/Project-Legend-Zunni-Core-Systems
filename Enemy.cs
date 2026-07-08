@@ -163,7 +163,7 @@ public class Enemy : MonoBehaviour
 
         if(deathFeedback != null) deathFeedback.PlayFeedbacks();
         SpawnCurrencyDrop();
-        // The "+ 1" on the max. This is a Unity trick.
+        // The "+ 1" on the max.
         int randomAmountOfBonusLoot = Random.Range(minBonusDrops, maxBonusDrops + 1);
         SpawnBonusLoot(randomAmountOfBonusLoot);
 
