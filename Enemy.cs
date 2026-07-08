@@ -10,10 +10,8 @@ public class Enemy : MonoBehaviour
 {
     #region Inspector Fields
 
-
     [Header("Stats")]
     [SerializeField] protected EnemyData enemyData;
-
 
     [Header("References")]
     [SerializeField] protected EnemyHealthBar enemyHealthBarScript;
@@ -25,11 +23,9 @@ public class Enemy : MonoBehaviour
     [Header("Drops")]
     [SerializeField] protected List<CurrencyType> currencyTypes = new List<CurrencyType>();
 
-
     [Header("Loot Weights")]
     [SerializeField] protected float healthWeight;
     [SerializeField] protected float damageWeight;
-
 
     [Header("Bonus Loot Settings")]
     [Tooltip("Minimum amount of bonus items to drop")]
@@ -62,15 +58,21 @@ public class Enemy : MonoBehaviour
     protected float lastHitTime = 0f;
     protected float hitCooldown = 0.1f;
 
+    protected Vector3 initialScale;
 
     #endregion
 
     #region Unity Lifecycle
 
+    protected virtual void Awake()
+    {
+        if (enemySprite != null) defaultMat = enemySprite.material;
+        initialScale = transform.localScale;
+    }
+
     protected virtual void Start()
     {
         currentHealth = enemyData.baseHealth;
-        defaultMat = enemySprite.material;
         if (enemyRigidBody != null)
         {
             enemyRigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -256,12 +258,20 @@ public class Enemy : MonoBehaviour
         anim.SetBool("IsDead", true);
         PlayFlash();
         yield return new WaitForSeconds(0.65f);
-        DestroySelf();
+        Despawn();
     }
 
-    protected void DestroySelf()
+    public void Despawn()
     {
-        Destroy(gameObject);
+        CancelInvoke();
+        StopAllCoroutines();
+
+
+        ResetFeedbacksAndVFX();
+
+        ResetEnemyAnimations();
+
+        gameObject.SetActive(false);
     }
     #endregion
 
@@ -290,6 +300,88 @@ public class Enemy : MonoBehaviour
 
         textInstance.SetupText(damage, isCrit);
 
+    }
+    #endregion
+    #region ResetFeedBacksAndVFX
+    protected void ResetFeedbacksAndVFX()
+    {
+        if (hitFeedback != null)
+        {
+            hitFeedback.StopFeedbacks();
+            hitFeedback.RestoreInitialValues();
+        }
+
+        if (deathFeedback != null)
+        {
+            deathFeedback.StopFeedbacks();
+            deathFeedback.RestoreInitialValues();
+        }
+
+        ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>(true);
+        foreach (ParticleSystem ps in particles)
+        {
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            ps.Clear(true);
+        }
+    }
+    #endregion
+    #region ResetEnemyAnimations
+    protected private void ResetEnemyAnimations()
+    {
+        anim.SetBool("IsDead", false);
+        anim.SetBool("IsAttacking", false);
+        anim.SetBool("IsIdle", true);
+    }
+    #endregion
+    #region ResetForSpawn
+    public void ResetForSpawn(int stageIndex, Vector3 position, Quaternion rotation)
+    {
+        CancelInvoke();
+        if (deathFeedback != null)
+            deathFeedback.StopFeedbacks();
+
+        gameObject.SetActive(false);
+
+        transform.SetPositionAndRotation(position, rotation);
+
+ 
+        if (enemyRigidBody != null)
+        {
+            enemyRigidBody.simulated = false;
+            enemyRigidBody.position = position;
+            enemyRigidBody.rotation = rotation.eulerAngles.z;
+            enemyRigidBody.linearVelocity = Vector2.zero;
+        }
+
+        transform.localScale = initialScale;
+
+        isDead = false;
+        lastHitTime = 0f;
+
+        Collider2D[] allColliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D col in allColliders)
+            col.enabled = true;
+
+        gameObject.SetActive(true);
+
+        if (enemyRigidBody != null)
+        {
+            Physics2D.SyncTransforms();
+            enemyRigidBody.simulated = true;
+        }
+
+        Initialize(stageIndex);
+
+        ResetFeedbacksAndVFX();
+
+
+        ResetEnemyAnimations();
+
+        if (enemySprite != null) enemySprite.material = defaultMat;
+
+        if (enemyHealthBarScript != null)
+            enemyHealthBarScript.EnemyRespawned();
+       
     }
     #endregion
     #region Inner Classes
